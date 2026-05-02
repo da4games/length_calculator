@@ -14,8 +14,16 @@ Also change the name of the image in the pyinstaller command if you want to comp
 
 # Manual .exe build
 
-To compile the program into a single executable file:
+To compile the program into a single executable file __on Arm64__:
 
 ```bash
-pyinstaller --onefile --noconfirm --strip --clean --console --name "Length Measurement Tool" --icon assets/python.ico --add-data "assets/Asturien Grundriss big 2.jpg;assets" main.py
+pyinstaller --onefile --noconfirm --strip --clean --console --name "Length Measurement Tool-arm64" --icon assets/python.ico --add-data "assets/Asturien Grundriss big 2.jpg;assets" --distpath dist\arm64 --workpath build\arm64 main.py
 ```
+
+To compile the program into a single executable file __on x64__:
+
+```bash
+pyinstaller --onefile --noconfirm --strip --clean --console --name "Length Measurement Tool-x64" --icon assets/python.ico --add-data "assets/Asturien Grundriss big 2.jpg;assets" --distpath dist\x64 --workpath build\x64 main.py
+```
+
+For system types not covered please adjust the __--name__, __--distpath__ and __--workpath__.
