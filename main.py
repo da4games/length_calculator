@@ -1,10 +1,18 @@
 import math
 import tkinter as tk
 from PIL import Image, ImageTk  # pip install pillow
+import os
+import sys
+
+
+def resource_path(relative_path: str) -> str:
+    base_path = getattr(sys, "_MEIPASS", os.path.abspath("."))
+    return os.path.join(base_path, relative_path)
+
 
 # User configuration
 WINDOW_TITLE = "Length Measurement Tool"
-IMAGE_PATH = "Asturien Grundriss big 2.jpg"
+IMAGE_PATH = resource_path("assets/Asturien Grundriss big 2.jpg")
 MARGIN = 20
 REFERENCE_P1 = (1138, 900)  # In original image pixels (unscaled)
 REFERENCE_P2 = (459, 900)  # In original image pixels (unscaled)
@@ -14,7 +22,9 @@ REFERENCE_COLOR = "red"
 MEASUREMENT_COLOR = "#0066cc"
 LINE_WIDTH = 2  # In pixels on the canvas (not scaled)
 MARKER_RADIUS = 2  # In pixels on the canvas (not scaled)
-LABEL_OFFSET = 4  # Vertical offset for labels above the line, in pixels on the canvas (not scaled)
+LABEL_OFFSET = (
+    4  # Vertical offset for labels above the line, in pixels on the canvas (not scaled)
+)
 SHIFT_MASK = 0x0001
 
 root = tk.Tk()
