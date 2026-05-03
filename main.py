@@ -20,11 +20,12 @@ REFERENCE_REAL_DISTANCE = 540  # In reference units
 REFERENCE_UNIT = "cm"
 REFERENCE_COLOR = "red"
 MEASUREMENT_COLOR = "#0066cc"
-LINE_WIDTH = 2  # In pixels on the canvas (not scaled)
-MARKER_RADIUS = 2  # In pixels on the canvas (not scaled)
+LINE_WIDTH = 3  # In pixels on the canvas (not scaled)
+MARKER_RADIUS = 3  # In pixels on the canvas (not scaled)
 LABEL_OFFSET = (
     4  # Vertical offset for labels above the line, in pixels on the canvas (not scaled)
 )
+LABEL_SIZE = 14  # Font size for labels
 SHIFT_MASK = 0x0001
 
 root = tk.Tk()
@@ -102,7 +103,14 @@ def draw_reference_line(p1, p2, label_text, color=REFERENCE_COLOR):
     label_x = (x1 + x2) / 2
     label_y = min(y1, y2) - LABEL_OFFSET
     items.append(
-        canvas.create_text(label_x, label_y, text=label_text, fill=color, anchor="s")
+        canvas.create_text(
+            label_x,
+            label_y,
+            text=label_text,
+            fill=color,
+            anchor="s",
+            font=("TkDefaultFont", LABEL_SIZE),
+        )
     )
     return items
 
